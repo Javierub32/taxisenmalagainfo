@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TaxisEnMalaga</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <div>
+        <img src="https://taxisenmalaga.com/wp-content/uploads/2019/07/logo.png" class="logo" alt="">
+        <div class="fotoPerfil"></div>
+        <h1 class="titulo">Taxis en Málaga</h1>
+        <h2 class="subtitulo">Taxi Nº752</h2>
+        <a href="https://taxisenmalaga.com/" class="boton">Ir a taxisenmalaga.com</a>
+     </div>
+     <div class="botones">
+        <div class="fila">
+            <a href="tel:+34665827814" class="boton-contenedor">
+                <img src="images/phone.png" alt="Icono 1" class="icono">
+                <h3 class="subtitulo-boton">Llamar</h3>
+            </a>
+            <a href="https://wa.me/665827814" class="boton-contenedor">
+                <img src="images/whatsap.png" alt="Icono 2" class="icono">
+                <h3 class="subtitulo-boton">WhatsApp</h3>
+            </a>
+            <a href="info/contacto.vcf" class="boton-contenedor">
+                <img src="images/agenda.png" alt="Icono 3" class="icono">
+                <h3 class="subtitulo-boton">Añadir Contacto</h3>
+            </a>
+        </div>
+        <div class="fila">
+            <a href="mailto:infotaxisenmalaga@gmail.com" class="boton-contenedor">
+                <img src="images/mail.png" alt="Icono 4" class="icono">
+                <h3 class="subtitulo-boton">Correo</h3>
+            </a>
+            <a href="https://taxisenmalaga.com/" class="boton-contenedor">
+                <img src="images/info.png" alt="Icono 5" class="icono">
+                <h3 class="subtitulo-boton">Información</h3>
+            </a>
+            <a id="add-to-home" class="boton-contenedor">
+                <img src="images/rocket.png" alt="Añadir a inicio" class="icono">
+                <h3 class="subtitulo-boton">Añadir a Inicio</h3>
+            </a>
+        </div>
+     </div>
+     
+
+</body>
+</html>
+
+<script>
+    let deferredPrompt;
+    const addToHomeBtn = document.getElementById('add-to-home');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Previene que el navegador muestre el mensaje de instalación por defecto
+        e.preventDefault();
+        // Guarda el evento para que pueda ser disparado más tarde
+        deferredPrompt = e;
+        // Muestra el botón de "Añadir a Inicio"
+        addToHomeBtn.style.display = 'block';
+
+        addToHomeBtn.addEventListener('click', () => {
+            // Oculta el botón de "Añadir a Inicio"
+            addToHomeBtn.style.display = 'none';
+            // Muestra el mensaje de instalación
+            deferredPrompt.prompt();
+            // Espera a que el usuario responda al mensaje
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('El usuario aceptó añadir a la pantalla de inicio');
+                } else {
+                    console.log('El usuario rechazó añadir a la pantalla de inicio');
+                }
+                deferredPrompt = null;
+            });
+        });
+    });
+</script>

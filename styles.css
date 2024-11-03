@@ -1,0 +1,100 @@
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.fotoPerfil {
+    width: 20vh;
+    height: 20vh;
+    background-image: url("https://lh3.googleusercontent.com/p/AF1QipPjKNCAeOUhwciRrk_Q702z4MXFkRYEq0uvjXu9=s1360-w1360-h1020-rw");
+    border-radius: 100%;
+    margin: 0 auto;
+    display: block;
+    background-size: 140%;
+    background-position: center;
+    box-shadow: 1px 1px 20px 0 #333;
+    margin-top: 3vh;
+}
+
+.logo  {
+    filter: drop-shadow(2px 2px 3px #555);
+    margin: auto;
+    display: block;
+    margin-top: 10vh;
+    width: 35vh;;
+}
+
+.titulo {
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 3.5vh;
+    margin-top: 2vh;
+    margin-bottom: 0;
+    text-align: center;    
+}
+
+.subtitulo {
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 2vh;
+    margin-top: 1vh;
+    text-align: center;    
+}
+
+.boton {
+    display: block;
+    width: 85%;
+    text-decoration: none;
+    text-align: center;
+    color: #348cd4;
+    font-size: 2.2vh;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 4vh;
+    padding: 1.5vh;
+    
+    border: 0.3vh solid #48a;
+    border-radius: 10px;
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.boton-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30%; /* Ajusta el tamaño del contenedor del botón */
+    margin: 0.5vh; /* Añade un margen para el espaciado */
+    text-decoration: none;
+}
+
+.icono {
+    margin-top: 2vh;
+    width: 6.5vh;
+    height: 6.5vh;
+    border-radius: 100%;
+}
+
+.subtitulo-boton {
+    margin-top: 1vh;
+    font-size: 1.8vh;
+    font-weight: 300;
+    color: #379;
+}
