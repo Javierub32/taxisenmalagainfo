@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>TaxisEnMalaga</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
      <div>
@@ -36,43 +41,52 @@
                 <img src="images/info.png" alt="Icono 5" class="icono">
                 <h3 class="subtitulo-boton">Información</h3>
             </a>
-            <a id="add-to-home" class="boton-contenedor">
+            <a id="add-to-home" class="boton-contenedor" style="display: none;">
                 <img src="images/rocket.png" alt="Añadir a inicio" class="icono">
                 <h3 class="subtitulo-boton">Añadir a Inicio</h3>
             </a>
-        </div>
-     </div>
-     
-
-</body>
-</html>
-
-<script>
-    let deferredPrompt;
-    const addToHomeBtn = document.getElementById('add-to-home');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Previene que el navegador muestre el mensaje de instalación por defecto
-        e.preventDefault();
-        // Guarda el evento para que pueda ser disparado más tarde
-        deferredPrompt = e;
-        // Muestra el botón de "Añadir a Inicio"
-        addToHomeBtn.style.display = 'block';
-
-        addToHomeBtn.addEventListener('click', () => {
-            // Oculta el botón de "Añadir a Inicio"
-            addToHomeBtn.style.display = 'none';
-            // Muestra el mensaje de instalación
-            deferredPrompt.prompt();
-            // Espera a que el usuario responda al mensaje
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('El usuario aceptó añadir a la pantalla de inicio');
-                } else {
-                    console.log('El usuario rechazó añadir a la pantalla de inicio');
+        
+            <!-- Scripts -->
+            <script>
+                let deferredPrompt;
+        
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    console.log('Evento beforeinstallprompt disparado');
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    document.getElementById('add-to-home').style.display = 'block';
+                });
+        
+                const addBtn = document.getElementById('add-to-home');
+                addBtn.addEventListener('click', (e) => {
+                    console.log('Botón "Añadir a Inicio" pulsado');
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then((choiceResult) => {
+                            if (choiceResult.outcome === 'accepted') {
+                                console.log('El usuario aceptó la instalación');
+                            } else {
+                                console.log('El usuario rechazó la instalación');
+                            }
+                            deferredPrompt = null;
+                        });
+                    } else {
+                        console.log('El evento deferredPrompt no está disponible');
+                    }
+                    addBtn.style.display = 'none';
+                });
+            </script>
+        
+            <script>
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('sw.js')
+                        .then(function(registration) {
+                            console.log('Service Worker registrado con éxito:', registration.scope);
+                        })
+                        .catch(function(error) {
+                            console.log('Error al registrar el Service Worker:', error);
+                        });
                 }
-                deferredPrompt = null;
-            });
-        });
-    });
-</script>
+            </script>
+        </body>
+        </html>

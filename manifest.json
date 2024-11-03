@@ -1,20 +1,20 @@
 {
-    "name": "Taxis en Málaga",
-    "short_name": "TaxisMálaga",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "description": "Servicio de taxis en Málaga",
-    "icons": [
-        {
-            "src": "images/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "images/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "name": "Taxis en Málaga",
+  "short_name": "Taxis Málaga",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "images/agenda.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/agenda.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
